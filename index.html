@@ -1,0 +1,81 @@
+(cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
+diff --git a/index.html b/index.html
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1,74 @@
++<!DOCTYPE html>
++<html lang="fr">
++<head>
++  <meta charset="utf-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1">
++  <meta name="description" content="Rapport de stage – site de présentation aligné sur les critères d'évaluation (5 critères).">
++  <title>Rapport de stage – Accueil</title>
++  <link rel="stylesheet" href="styles.css">
++</head>
++<body>
++  <a class="skip-link" href="#contenu">Aller au contenu</a>
++
++  <header class="site-header" role="banner">
++    <div class="container">
++      <h1>Rapport de stage</h1>
++      <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
++      <div class="meta">
++        <span><strong>Étudiant·e</strong> : <span class="placeholder" data-edit="votre-nom">Lilian Mahier</span></span>
++        <span><strong>Période</strong> : <span class="placeholder" data-edit="dates">02/05/2025 - 30/06/2025 — <em>8 semaines</em></span></span>
++        <span><strong>Tuteur·rice</strong> : <span class="placeholder" data-edit="tuteur">Nasser Madaran</span></span>
++      </div>
++      <nav class="site-nav" aria-label="Navigation principale">
++        <ul>
++          <li class="dropdown">
++            <a href="#" class="dropbtn" aria-haspopup="true" aria-expanded="false">Pages</a>
++            <ul class="dropdown-menu" role="menu">
++              <li><a href="informations.html">1. Informations sur le stage</a></li>
++              <li><a href="entreprise.html">2. Présentation de l’entreprise</a></li>
++              <li><a href="retour.html">3. Retour d’expérience</a></li>
++              <li><a href="analyse.html">4. Analyse critique</a></li>
++              <li><a href="projet.html">5. Projet professionnel</a></li>
++            </ul>
++          </li>
++          <li><a href="index.html">Accueil</a></li>
++        </ul>
++      </nav>
++      <div class="actions">
++        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
++      </div>
++    </div>
++  </header>
++
++  <main id="contenu" class="container" role="main">
++    <section aria-labelledby="titre-accueil">
++      <h2 id="titre-accueil">Accueil</h2>
++      <div class="card">
++        <p>Bienvenue sur mon rapport de stage. Utilisez le menu « Pages » ci-dessus pour accéder aux sections détaillées qui répondent aux critères d’évaluation.</p>
++        <ul class="key-points">
++          <li><strong>Entreprise</strong> : Leker — startup (SaaS) de communication éthique et écologique</li>
++          <li><strong>Rôle</strong> : Marketing Communication Manager, orientation growth</li>
++          <li><strong>Faits marquants</strong> : relance de LinkedIn (+3000% impressions, CTR > 20%), série Instagram écologie numérique, atelier AFD, contribution SEO à la migration</li>
++        </ul>
++      </div>
++    </section>
++  </main>
++
++  <footer class="site-footer" role="contentinfo">
++    <div class="container">
++      <p>Contact : <span class="placeholder" data-edit="email">lilian.mahier.22@neoma-bs.com</span> · Dernière mise à jour : <span id="last-updated"></span></p>
++    </div>
++  </footer>
++
++  <script>
++    (function(){
++      var e = document.getElementById('last-updated');
++      if(e){
++        var d = new Date();
++        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
++        e.textContent = s;
++      }
++    })();
++  </script>
++</body>
++</html>
+EOF
+)
