@@ -1,0 +1,85 @@
+(cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
+diff --git a/analyse.html b/analyse.html
+--- a/analyse.html
++++ b/analyse.html
+@@ -0,0 +1,78 @@
++<!DOCTYPE html>
++<html lang="fr">
++<head>
++  <meta charset="utf-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1">
++  <title>4. Analyse critique</title>
++  <link rel="stylesheet" href="styles.css">
++</head>
++<body>
++  <a class="skip-link" href="#contenu">Aller au contenu</a>
++  <header class="site-header" role="banner">
++    <div class="container">
++      <h1>Analyse critique</h1>
++      <p class="subtitle">Pratiques observées, confrontation avec ma vision initiale</p>
++      <div class="meta">
++        <span><strong>Étudiant·e</strong> : Lilian Mahier</span>
++        <span><strong>Période</strong> : 02/05/2025 - 30/06/2025 — <em>8 semaines</em></span>
++        <span><strong>Tuteur·rice</strong> : Nasser Madaran</span>
++      </div>
++      <nav class="site-nav" aria-label="Navigation principale">
++        <ul>
++          <li class="dropdown">
++            <a href="#" class="dropbtn">Pages</a>
++            <ul class="dropdown-menu">
++              <li><a href="informations.html">1. Informations sur le stage</a></li>
++              <li><a href="entreprise.html">2. Présentation de l’entreprise</a></li>
++              <li><a href="retour.html">3. Retour d’expérience</a></li>
++              <li><a href="analyse.html">4. Analyse critique</a></li>
++              <li><a href="projet.html">5. Projet professionnel</a></li>
++            </ul>
++          </li>
++          <li><a href="index.html">Accueil</a></li>
++        </ul>
++      </nav>
++      <div class="actions">
++        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
++      </div>
++    </div>
++  </header>
++
++  <main id="contenu" class="container" role="main">
++    <section>
++      <div class="card">
++        <h3>Pratiques observées</h3>
++        <ul class="checklist">
++          <li>Approche data-driven (KPI, tests réguliers, arbitrage par impact)</li>
++          <li>Itérations rapides, feedbacks courts, priorisation hebdomadaire</li>
++          <li>Alignement brand, acquisition et valeur produit</li>
++        </ul>
++        <h3>Vision initiale vs réalité</h3>
++        <p>Je pensais que la portée organique reposait principalement sur la créativité graphique. J’ai constaté que l’essentiel vient du ciblage, du message, du format et du timing, optimisés en continu.</p>
++        <h3>Avantages et limites d’une startup comme Leker</h3>
++        <ul>
++          <li><strong>Avantages</strong> — Agilité, décisions rapides, apprentissages accélérés, périmètre d’action large.</li>
++          <li><strong>Limites</strong> — Ressources limitées, arbitrages difficiles, nécessité de formaliser pour passer à l’échelle.</li>
++        </ul>
++      </div>
++    </section>
++  </main>
++
++  <footer class="site-footer" role="contentinfo">
++    <div class="container">
++      <p>Contact : lilian.mahier.22@neoma-bs.com · Dernière mise à jour : <span id="last-updated"></span></p>
++    </div>
++  </footer>
++
++  <script>
++    (function(){
++      var e = document.getElementById('last-updated');
++      if(e){
++        var d = new Date();
++        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
++        e.textContent = s;
++      }
++    })();
++  </script>
++</body>
++</html>
+EOF
+)
