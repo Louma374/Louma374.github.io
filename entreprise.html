@@ -1,88 +1,332 @@
-(cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
-diff --git a/entreprise.html b/entreprise.html
---- a/entreprise.html
-+++ b/entreprise.html
-@@ -0,0 +1,81 @@
-+<!DOCTYPE html>
-+<html lang="fr">
-+<head>
-+  <meta charset="utf-8">
-+  <meta name="viewport" content="width=device-width, initial-scale=1">
-+  <title>2. Présentation de l’entreprise</title>
-+  <link rel="stylesheet" href="styles.css">
-+</head>
-+<body>
-+  <a class="skip-link" href="#contenu">Aller au contenu</a>
-+  <header class="site-header" role="banner">
-+    <div class="container">
-+      <h1>Présentation de l’entreprise</h1>
-+      <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
-+      <div class="meta">
-+        <span><strong>Étudiant·e</strong> : Lilian Mahier</span>
-+        <span><strong>Période</strong> : 02/05/2025 - 30/06/2025 — <em>8 semaines</em></span>
-+        <span><strong>Tuteur·rice</strong> : Nasser Madaran</span>
-+      </div>
-+      <nav class="site-nav" aria-label="Navigation principale">
-+        <ul>
-+          <li class="dropdown">
-+            <a href="#" class="dropbtn">Pages</a>
-+            <ul class="dropdown-menu">
-+              <li><a href="informations.html">1. Informations sur le stage</a></li>
-+              <li><a href="entreprise.html">2. Présentation de l’entreprise</a></li>
-+              <li><a href="retour.html">3. Retour d’expérience</a></li>
-+              <li><a href="analyse.html">4. Analyse critique</a></li>
-+              <li><a href="projet.html">5. Projet professionnel</a></li>
-+            </ul>
-+          </li>
-+          <li><a href="index.html">Accueil</a></li>
-+        </ul>
-+      </nav>
-+      <div class="actions">
-+        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
-+      </div>
-+    </div>
-+  </header>
-+
-+  <main id="contenu" class="container" role="main">
-+    <section>
-+      <div class="grid-2">
-+        <div class="card">
-+          <h3>Activité & secteur</h3>
-+          <p>Plateforme (SaaS) de communication éthique et écologique.</p>
-+          <h3>Histoire</h3>
-+          <p>Créée en 2023. Contexte de création : volonté d’amener une communication plus éthique et écologique.</p>
-+        </div>
-+        <div class="card">
-+          <h3>Organisation</h3>
-+          <p>Structure de l’équipe pendant le stage : CEO, CSO, 2 Growth Marketing Managers (stagiaires).</p>
-+          <h3>Pratiques principales</h3>
-+          <ul>
-+            <li>Communication digitale orientée données (KPI, tests A/B, itérations rapides)</li>
-+            <li>Animation des communautés sur LinkedIn et Instagram</li>
-+            <li>SEO et migration de contenus</li>
-+          </ul>
-+        </div>
-+      </div>
-+    </section>
-+  </main>
-+
-+  <footer class="site-footer" role="contentinfo">
-+    <div class="container">
-+      <p>Contact : lilian.mahier.22@neoma-bs.com · Dernière mise à jour : <span id="last-updated"></span></p>
-+    </div>
-+  </footer>
-+
-+  <script>
-+    (function(){
-+      var e = document.getElementById('last-updated');
-+      if(e){
-+        var d = new Date();
-+        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
-+        e.textContent = s;
-+      }
-+    })();
-+  </script>
-+</body>
-+</html>
-EOF
-)
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2. Présentation de l'entreprise</title>
+  <style>
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --card: #0b1220;
+  --border: #1f2937;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container { 
+  width: 100%; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 0 16px; 
+}
+
+.skip-link { 
+  position: absolute; 
+  left: -9999px; 
+  z-index: 1000;
+}
+.skip-link:focus { 
+  left: 16px; 
+  top: 16px; 
+  background: #fff; 
+  color: #000; 
+  padding: 8px 12px; 
+  border-radius: 6px; 
+  text-decoration: none;
+}
+
+.site-header { 
+  padding: 40px 0 24px; 
+  border-bottom: 1px solid var(--border); 
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,0.25), transparent 60%); 
+}
+.site-header h1 { 
+  margin: 0 0 8px; 
+  font-size: 34px; 
+  letter-spacing: -0.02em; 
+}
+.subtitle { 
+  margin: 0 0 8px; 
+  color: var(--muted); 
+}
+.meta { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+  gap: 6px 16px; 
+  margin: 12px 0 0; 
+  color: var(--muted); 
+}
+.meta strong { 
+  color: var(--text); 
+}
+
+.site-nav ul { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 8px; 
+  list-style: none; 
+  padding: 0; 
+  margin: 16px 0 0; 
+}
+.site-nav a, .site-nav .dropbtn { 
+  display: inline-block; 
+  padding: 8px 12px; 
+  border: 1px solid var(--border); 
+  border-radius: 10px; 
+  color: var(--text); 
+  text-decoration: none; 
+  background: rgba(255,255,255,0.02); 
+  cursor: pointer; 
+  font-family: inherit;
+  font-size: inherit;
+  transition: all 0.2s ease;
+}
+.site-nav a:hover, .site-nav .dropbtn:hover { 
+  border-color: var(--accent); 
+  box-shadow: 0 0 0 2px rgba(34,197,94,0.2); 
+}
+
+.site-nav li.dropdown { 
+  position: relative; 
+}
+.site-nav li.dropdown > .dropbtn::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 8px;
+}
+.site-nav li.dropdown .dropdown-menu { 
+  position: absolute; 
+  top: 110%; 
+  left: 0; 
+  min-width: 280px; 
+  background: var(--panel); 
+  border: 1px solid var(--border); 
+  border-radius: 12px; 
+  padding: 8px; 
+  display: none; 
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3); 
+  z-index: 50; 
+  list-style: none;
+}
+.site-nav li.dropdown .dropdown-menu li { 
+  list-style: none; 
+  margin: 0; 
+}
+.site-nav li.dropdown .dropdown-menu a { 
+  display: block; 
+  padding: 8px 10px; 
+  border-radius: 8px; 
+  border: none; 
+  background: transparent; 
+  white-space: nowrap;
+}
+.site-nav li.dropdown .dropdown-menu a:hover { 
+  background: rgba(255,255,255,0.04); 
+}
+.site-nav li.dropdown:hover .dropdown-menu, 
+.site-nav li.dropdown:focus-within .dropdown-menu { 
+  display: block; 
+}
+
+.actions { 
+  margin-top: 16px; 
+}
+.btn { 
+  padding: 10px 14px; 
+  border-radius: 10px; 
+  border: 1px solid var(--border); 
+  background: var(--panel); 
+  color: var(--text); 
+  cursor: pointer; 
+  font-family: inherit;
+  font-size: inherit;
+  transition: all 0.2s ease;
+}
+.btn:hover { 
+  border-color: var(--accent); 
+}
+
+main { 
+  padding: 32px 0 64px; 
+}
+section { 
+  margin: 28px 0; 
+}
+
+h2 { 
+  font-size: 24px; 
+  margin: 0 0 12px; 
+  letter-spacing: -0.01em; 
+}
+h3 {
+  margin: 0 0 12px;
+  color: var(--text);
+}
+.card { 
+  background: var(--card); 
+  border: 1px solid var(--border); 
+  border-radius: 14px; 
+  padding: 20px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+  margin-bottom: 16px;
+}
+
+.grid-2 { 
+  display: grid; 
+  gap: 16px; 
+  grid-template-columns: 1fr; 
+}
+@media (min-width: 800px) { 
+  .grid-2 { 
+    grid-template-columns: 1fr 1fr; 
+  } 
+}
+
+.site-footer { 
+  border-top: 1px solid var(--border); 
+  padding: 16px 0; 
+  color: var(--muted); 
+  background: rgba(255,255,255,0.02); 
+  margin-top: auto;
+}
+
+ul {
+  margin: 12px 0;
+  padding-left: 18px;
+}
+ul li {
+  margin: 6px 0;
+}
+
+p {
+  margin: 12px 0;
+}
+
+@media print {
+  :root { --text: #000; --muted: #333; }
+  body { background: #fff !important; color: #000 !important; }
+  .site-header { background: none !important; }
+  .site-nav, .actions { display: none !important; }
+  .card { box-shadow: none; border-color: #ddd; }
+  a { color: #000; text-decoration: none; }
+  .container { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .site-header h1 { font-size: 28px; }
+  .meta { grid-template-columns: 1fr; }
+  .site-nav ul { flex-direction: column; align-items: flex-start; }
+  .site-nav li.dropdown .dropdown-menu { position: static; display: none; box-shadow: none; margin-top: 8px; }
+  .grid-2 { grid-template-columns: 1fr; }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <h1>Présentation de l'entreprise</h1>
+      <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
+      <div class="meta">
+        <span><strong>Étudiant·e</strong> : Lilian Mahier</span>
+        <span><strong>Période</strong> : 02/05/2025 - 30/06/2025 — <em>8 semaines</em></span>
+        <span><strong>Tuteur·rice</strong> : Nasser Madaran</span>
+      </div>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li class="dropdown">
+            <button class="dropbtn">Pages</button>
+            <ul class="dropdown-menu">
+              <li><a href="informations.html">1. Informations sur le stage</a></li>
+              <li><a href="entreprise.html">2. Présentation de l'entreprise</a></li>
+              <li><a href="retour.html">3. Retour d'expérience</a></li>
+              <li><a href="analyse.html">4. Analyse critique</a></li>
+              <li><a href="projet.html">5. Projet professionnel</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html">Accueil</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu" class="container" role="main">
+    <section>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Activité & secteur</h3>
+          <p>Plateforme (SaaS) de communication éthique et écologique.</p>
+          <h3>Histoire</h3>
+          <p>Créée en 2023. Contexte de création : volonté d'amener une communication plus éthique et écologique.</p>
+        </div>
+        <div class="card">
+          <h3>Organisation</h3>
+          <p>Structure de l'équipe pendant le stage : CEO, CSO, 2 Growth Marketing Managers (stagiaires).</p>
+          <h3>Pratiques principales</h3>
+          <ul>
+            <li>Communication digitale orientée données (KPI, tests A/B, itérations rapides)</li>
+            <li>Animation des communautés sur LinkedIn et Instagram</li>
+            <li>SEO et migration de contenus</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>Contact : lilian.mahier.22@neoma-bs.com · Dernière mise à jour : <span id="last-updated"></span></p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdown = document.querySelector('.dropdown');
+      const dropbtn = document.querySelector('.dropbtn');
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+      
+      if (dropbtn && dropdownMenu) {
+        dropbtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isOpen = dropdownMenu.style.display === 'block';
+          dropdownMenu.style.display = isOpen ? 'none' : 'block';
+          dropbtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        });
+        
+        document.addEventListener('click', function(e) {
+          if (!dropdown.contains(e.target)) {
+            dropdownMenu.style.display = 'none';
+            dropbtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      
+      const lastUpdated = document.getElementById('last-updated');
+      if (lastUpdated) {
+        const date = new Date();
+        const formattedDate = [
+          date.getDate().toString().padStart(2,'0'), 
+          (date.getMonth()+1).toString().padStart(2,'0'), 
+          date.getFullYear()
+        ].join('/');
+        lastUpdated.textContent = formattedDate;
+      }
+    });
+  </script>
+</body>
+</html>
