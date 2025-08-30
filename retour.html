@@ -1,101 +1,133 @@
-(cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
-diff --git a/retour.html b/retour.html
---- a/retour.html
-+++ b/retour.html
-@@ -0,0 +1,94 @@
-+<!DOCTYPE html>
-+<html lang="fr">
-+<head>
-+  <meta charset="utf-8">
-+  <meta name="viewport" content="width=device-width, initial-scale=1">
-+  <title>3. Retour d’expérience</title>
-+  <link rel="stylesheet" href="styles.css">
-+</head>
-+<body>
-+  <a class="skip-link" href="#contenu">Aller au contenu</a>
-+  <header class="site-header" role="banner">
-+    <div class="container">
-+      <h1>Retour d’expérience</h1>
-+      <p class="subtitle">Principales missions et acquis</p>
-+      <div class="meta">
-+        <span><strong>Étudiant·e</strong> : Lilian Mahier</span>
-+        <span><strong>Période</strong> : 02/05/2025 - 30/06/2025 — <em>8 semaines</em></span>
-+        <span><strong>Tuteur·rice</strong> : Nasser Madaran</span>
-+      </div>
-+      <nav class="site-nav" aria-label="Navigation principale">
-+        <ul>
-+          <li class="dropdown">
-+            <a href="#" class="dropbtn">Pages</a>
-+            <ul class="dropdown-menu">
-+              <li><a href="informations.html">1. Informations sur le stage</a></li>
-+              <li><a href="entreprise.html">2. Présentation de l’entreprise</a></li>
-+              <li><a href="retour.html">3. Retour d’expérience</a></li>
-+              <li><a href="analyse.html">4. Analyse critique</a></li>
-+              <li><a href="projet.html">5. Projet professionnel</a></li>
-+            </ul>
-+          </li>
-+          <li><a href="index.html">Accueil</a></li>
-+        </ul>
-+      </nav>
-+      <div class="actions">
-+        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
-+      </div>
-+    </div>
-+  </header>
-+
-+  <main id="contenu" class="container" role="main">
-+    <section>
-+      <article class="car card">
-+        <h3>Relance de LinkedIn</h3>
-+        <p><strong>Contexte</strong> — Compte peu actif et peu vu.</p>
-+        <p><strong>Actions</strong> — Repositionnement éditorial, calendrier, formats performants, optimisation des horaires, CTA clairs.</p>
-+        <p><strong>Résultats</strong> — +3000% d’impressions et CTR > 20% sur plusieurs posts.</p>
-+        <p><strong>Compétences</strong> — Pilotage de KPIs social media, copywriting conversion, conception de visuels, veille concurrentielle.</p>
-+      </article>
-+
-+      <article class="car card">
-+        <h3>Série Instagram sur l’écologie numérique</h3>
-+        <p><strong>Contexte</strong> — Sensibiliser la communauté aux bons gestes numériques.</p>
-+        <p><strong>Actions</strong> — Carrousels pédagogiques, charte iconographique, hashtags, calendrier.</p>
-+        <p><strong>Résultats</strong> — Portée organique en hausse, engagement qualitatif (sauvegardes, commentaires).</p>
-+        <p><strong>Compétences</strong> — Design de contenu, storytelling éducatif, cohérence de marque.</p>
-+      </article>
-+
-+      <article class="car card">
-+        <h3>Atelier pour l’AFD</h3>
-+        <p><strong>Contexte</strong> — Collaboration avec l’Agence Française de Développement.</p>
-+        <p><strong>Actions</strong> — Préparation des supports et de la trame, coordination logistique.</p>
-+        <p><strong>Résultats</strong> — Supports finalisés à temps, déroulé fluide, retours positifs.</p>
-+        <p><strong>Compétences</strong> — Gestion de projet, communication professionnelle, synthèse.</p>
-+      </article>
-+
-+      <article class="car card">
-+        <h3>SEO pour migration de site</h3>
-+        <p><strong>Contexte</strong> — Migration nécessitant la préservation du référencement.</p>
-+        <p><strong>Actions</strong> — Revue balises, maillage interne, redirections 301, recommandations structurelles.</p>
-+        <p><strong>Résultats</strong> — Risque de perte de trafic réduit, base SEO assainie.</p>
-+        <p><strong>Compétences</strong> — Bonnes pratiques SEO, collaboration avec l’équipe tech/produit.</p>
-+      </article>
-+    </section>
-+  </main>
-+
-+  <footer class="site-footer" role="contentinfo">
-+    <div class="container">
-+      <p>Contact : lilian.mahier.22@neoma-bs.com · Dernière mise à jour : <span id="last-updated"></span></p>
-+    </div>
-+  </footer>
-+
-+  <script>
-+    (function(){
-+      var e = document.getElementById('last-updated');
-+      if(e){
-+        var d = new Date();
-+        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
-+        e.textContent = s;
-+      }
-+    })();
-+  </script>
-+</body>
-+</html>
-EOF
-)
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3. Retour d'expérience</title>
+  <style>
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --card: #0b1220;
+  --border: #1f2937;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container { 
+  width: 100%; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 0 16px; 
+}
+
+.skip-link { 
+  position: absolute; 
+  left: -9999px; 
+  z-index: 1000;
+}
+.skip-link:focus { 
+  left: 16px; 
+  top: 16px; 
+  background: #fff; 
+  color: #000; 
+  padding: 8px 12px; 
+  border-radius: 6px; 
+  text-decoration: none;
+}
+
+.site-header { 
+  padding: 40px 0 24px; 
+  border-bottom: 1px solid var(--border); 
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,0.25), transparent 60%); 
+}
+.site-header h1 { 
+  margin: 0 0 8px; 
+  font-size: 34px; 
+  letter-spacing: -0.02em; 
+}
+.subtitle { 
+  margin: 0 0 8px; 
+  color: var(--muted); 
+}
+.meta { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+  gap: 6px 16px; 
+  margin: 12px 0 0; 
+  color: var(--muted); 
+}
+.meta strong { 
+  color: var(--text); 
+}
+
+.site-nav ul { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 8px; 
+  list-style: none; 
+  padding: 0; 
+  margin: 16px 0 0; 
+}
+.site-nav a, .site-nav .dropbtn { 
+  display: inline-block; 
+  padding: 8px 12px; 
+  border: 1px solid var(--border); 
+  border-radius: 10px; 
+  color: var(--text); 
+  text-decoration: none; 
+  background: rgba(255,255,255,0.02); 
+  cursor: pointer; 
+  font-family: inherit;
+  font-size: inherit;
+  transition: all 0.2s ease;
+}
+.site-nav a:hover, .site-nav .dropbtn:hover { 
+  border-color: var(--accent); 
+  box-shadow: 0 0 0 2px rgba(34,197,94,0.2); 
+}
+
+.site-nav li.dropdown { 
+  position: relative; 
+}
+.site-nav li.dropdown > .dropbtn::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 8px;
+}
+.site-nav li.dropdown .dropdown-menu { 
+  position: absolute; 
+  top: 110%; 
+  left: 0; 
+  min-width: 280px; 
+  background: var(--panel); 
+  border: 1px solid var(--border); 
+  border-radius: 12px; 
+  padding: 8px; 
+  display: none; 
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3); 
+  z-index: 50; 
+  list-style: none;
+}
+.site-nav li.dropdown .dropdown-menu li { 
+  list-style: none; 
+  margin: 0; 
+}
+.site-nav li.dropdown .dropdown-menu a { 
+  display: block; 
+  padding: 8px 10px; 
+  border-radius: 8px; 
+  border: none; 
+  background: transparent; 
+  white-space
