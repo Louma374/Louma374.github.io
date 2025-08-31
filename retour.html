@@ -3,131 +3,732 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>3. Retour d'expérience</title>
+  <meta name="description" content="Retour d'expérience détaillé du stage chez Leker">
+  <title>Retour d'expérience - Lilian Mahier</title>
   <style>
-:root {
-  --bg: #0f172a;
-  --panel: #111827;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --accent: #22c55e;
-  --card: #0b1220;
-  --border: #1f2937;
-}
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #c53d7d;
+      --card: #0b1220;
+      --border: #1e293b;
+      --gradient-1: linear-gradient(135deg, #c53d7d 0%, #8b5fbf 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #c53d7d 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', Helvetica, Arial, sans-serif;
-  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
-  color: var(--text);
-  line-height: 1.6;
-  min-height: 100vh;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.container { 
-  width: 100%; 
-  max-width: 1000px; 
-  margin: 0 auto; 
-  padding: 0 16px; 
-}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
 
-.skip-link { 
-  position: absolute; 
-  left: -9999px; 
-  z-index: 1000;
-}
-.skip-link:focus { 
-  left: 16px; 
-  top: 16px; 
-  background: #fff; 
-  color: #000; 
-  padding: 8px 12px; 
-  border-radius: 6px; 
-  text-decoration: none;
-}
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--accent);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+      border-radius: 4px;
+    }
 
-.site-header { 
-  padding: 40px 0 24px; 
-  border-bottom: 1px solid var(--border); 
-  background: radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,0.25), transparent 60%); 
-}
-.site-header h1 { 
-  margin: 0 0 8px; 
-  font-size: 34px; 
-  letter-spacing: -0.02em; 
-}
-.subtitle { 
-  margin: 0 0 8px; 
-  color: var(--muted); 
-}
-.meta { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-  gap: 6px 16px; 
-  margin: 12px 0 0; 
-  color: var(--muted); 
-}
-.meta strong { 
-  color: var(--text); 
-}
+    .skip-link:focus {
+      top: 6px;
+    }
 
-.site-nav ul { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 8px; 
-  list-style: none; 
-  padding: 0; 
-  margin: 16px 0 0; 
-}
-.site-nav a, .site-nav .dropbtn { 
-  display: inline-block; 
-  padding: 8px 12px; 
-  border: 1px solid var(--border); 
-  border-radius: 10px; 
-  color: var(--text); 
-  text-decoration: none; 
-  background: rgba(255,255,255,0.02); 
-  cursor: pointer; 
-  font-family: inherit;
-  font-size: inherit;
-  transition: all 0.2s ease;
-}
-.site-nav a:hover, .site-nav .dropbtn:hover { 
-  border-color: var(--accent); 
-  box-shadow: 0 0 0 2px rgba(34,197,94,0.2); 
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-.site-nav li.dropdown { 
-  position: relative; 
-}
-.site-nav li.dropdown > .dropbtn::after {
-  content: ' ▼';
-  font-size: 0.8em;
-  margin-left: 8px;
-}
-.site-nav li.dropdown .dropdown-menu { 
-  position: absolute; 
-  top: 110%; 
-  left: 0; 
-  min-width: 280px; 
-  background: var(--panel); 
-  border: 1px solid var(--border); 
-  border-radius: 12px; 
-  padding: 8px; 
-  display: none; 
-  box-shadow: 0 12px 30px rgba(0,0,0,0.3); 
-  z-index: 50; 
-  list-style: none;
-}
-.site-nav li.dropdown .dropdown-menu li { 
-  list-style: none; 
-  margin: 0; 
-}
-.site-nav li.dropdown .dropdown-menu a { 
-  display: block; 
-  padding: 8px 10px; 
-  border-radius: 8px; 
-  border: none; 
-  background: transparent; 
-  white-space
+    .site-header {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .logo-section {
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .site-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .meta span {
+      display: block;
+    }
+
+    .meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .tuteur-info {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tuteur-info strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-btn {
+      background: var(--gradient-1);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--card);
+      min-width: 280px;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      z-index: 1000;
+      margin-top: 0.5rem;
+    }
+
+    .nav-dropdown-content a {
+      color: var(--text);
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-dropdown-content a:hover {
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .nav-dropdown-content a.current {
+      background: var(--panel);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-content {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main {
+      padding: 3rem 0;
+      min-height: 80vh;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .callout {
+      background: linear-gradient(135deg, var(--accent)15, var(--accent)05);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .callout::before {
+      content: '💡';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .callout h4 {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .mission-detail {
+      background: var(--panel);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+    }
+
+    .mission-title {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mission-period {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .achievement-item {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .achievement-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .achievement-metric {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-desc {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-detail {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .competence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .competence-item {
+      background: var(--panel);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .competence-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .competence-name {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .competence-level {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .key-points {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .key-points li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .key-points li:before {
+      content: '▶';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .key-points li:last-child {
+      border-bottom: none;
+    }
+
+    .site-footer {
+      background: var(--panel);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .site-header h1 {
+        font-size: 2rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-right {
+        align-items: flex-start;
+      }
+
+      .tuteur-info {
+        text-align: left;
+      }
+      
+      .achievement-grid,
+      .competence-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .nav-dropdown,
+      .site-footer {
+        display: none;
+      }
+      
+      .card {
+        border: 1px solid #ddd;
+        box-shadow: none;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo-section">
+            <div class="logo-text">Leker</div>
+          </div>
+          <div class="header-text">
+            <h1>Rapport de stage</h1>
+            <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
+            <div class="meta">
+              <span><strong>Étudiant</strong> : Lilian Mahier</span>
+              <span><strong>Période</strong> : 8 semaines en 2024</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="tuteur-info">
+            <span><strong>Tuteur de stage</strong></span><br>
+            <span>Nasser Madaran</span><br>
+            <span>CEO & Fondateur</span>
+          </div>
+          
+          <div class="nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true" aria-expanded="false">
+              Navigation ▼
+            </button>
+            <div class="nav-dropdown-content">
+              <a href="index.html">Accueil</a>
+              <a href="informations.html">1. Informations sur le stage</a>
+              <a href="entreprise.html">2. Présentation de l'entreprise</a>
+              <a href="retour.html" class="current">3. Retour d'expérience</a>
+              <a href="analyse.html">4. Analyse critique</a>
+              <a href="projet.html">5. Projet professionnel</a>
+              <a href="defi-technique.html">6. Défi technique</a>
+              <a href="remerciements.html">7. Remerciements</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu" class="container" role="main">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a> > <span>Retour d'expérience</span>
+    </nav>
+
+    <section aria-labelledby="titre-retour">
+      <h2 id="titre-retour">3. Retour d'expérience</h2>
+      
+      <div class="callout">
+        <h4>Une immersion transformatrice</h4>
+        <p>8 semaines qui ont profondément marqué ma vision du marketing digital et révélé ma passion pour l'entrepreneuriat.</p>
+      </div>
+
+      <div class="card">
+        <h3>🎯 Missions réalisées</h3>
+        <p>Mon rôle de Marketing Communication Manager m'a permis de toucher à tous les aspects du marketing digital dans un environnement startup. Chaque mission était une opportunité d'apprendre et de contribuer concrètement à la croissance de l'entreprise.</p>
+
+        <div class="mission-detail">
+          <div class="mission-title">📱 Relance de la stratégie LinkedIn</div>
+          <div class="mission-period">Semaines 3-8 • Mission principale</div>
+          <p>Audit complet de la présence existante, redéfinition de la ligne éditoriale et mise en place d'une stratégie de contenu alignée avec les valeurs de Leker. Cette mission m'a permis de comprendre l'importance de la cohérence dans la communication digitale.</p>
+        </div>
+
+        <div class="mission-detail">
+          <div class="mission-title">📸 Développement Instagram</div>
+          <div class="mission-period">Semaines 4-7 • Création de contenu</div>
+          <p>Création d'une série de posts sur l'écologie numérique, avec un focus sur l'éducation de l'audience. Cette mission m'a appris l'art du storytelling visuel et l'importance de l'authenticité dans les messages.</p>
+        </div>
+
+        <div class="mission-detail">
+          <div class="mission-title">🏛️ Préparation atelier AFD</div>
+          <div class="mission-period">Semaines 6-8 • Projet spécial</div>
+          <p>Contribution à la préparation d'un atelier sur la communication responsable pour l'Agence Française de Développement. Cette collaboration institutionnelle m'a donné une perspective sur l'impact social du marketing.</p>
+        </div>
+
+        <div class="mission-detail">
+          <div class="mission-title">🔍 Support SEO</div>
+          <div class="mission-period">Semaines 5-7 • Optimisation technique</div>
+          <p>Accompagnement de la migration du site web et optimisation du référencement naturel. Cette mission technique m'a permis de comprendre les enjeux SEO dans une stratégie de croissance.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>📈 Résultats et performances</h3>
+        <p>Les stratégies mises en place ont généré des résultats mesurables et significatifs. Ces performances démontrent l'impact concret qu'un stagiaire motivé peut avoir dans une structure agile comme Leker.</p>
+
+        <div class="callout">
+          <h4>Méthodologie data-driven</h4>
+          <p>Chaque action était mesurée, analysée et optimisée en continu grâce aux outils d'analytics et à une approche scientifique du marketing.</p>
+        </div>
+
+        <div class="achievement-grid">
+          <div class="achievement-item">
+            <div class="achievement-metric">+3000%</div>
+            <div class="achievement-desc">Impressions LinkedIn</div>
+            <div class="achievement-detail">Croissance exponentielle de la visibilité organique</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-metric">20%</div>
+            <div class="achievement-desc">Taux de clic moyen</div>
+            <div class="achievement-detail">Performance remarquable pour du contenu B2B</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-metric">+150%</div>
+            <div class="achievement-desc">Engagement Instagram</div>
+            <div class="achievement-detail">Augmentation des interactions et commentaires</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-metric">+45%</div>
+            <div class="achievement-desc">Trafic organique</div>
+            <div class="achievement-detail">Amélioration du SEO et des positions Google</div>
+          </div>
+        </div>
+
+        <p>Ces résultats s'expliquent par une approche méthodique combinant analyse des données, tests A/B réguliers et adaptation constante aux feedbacks de la communauté. L'authenticité du message et la valeur apportée aux audiences ont été les clés de ce succès.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛠️ Compétences développées</h3>
+        <p>Cette expérience m'a permis de développer un large éventail de compétences techniques et transversales. L'environnement startup favorise la polyvalence et l'apprentissage accéléré.</p>
+
+        <div class="competence-grid">
+          <div class="competence-item">
+            <span class="competence-icon">📊</span>
+            <div class="competence-name">Analytics & Data</div>
+            <div class="competence-level">Google Analytics, LinkedIn Analytics</div>
+          </div>
+          <div class="competence-item">
+            <span class="competence-icon">🎨</span>
+            <div class="competence-name">Content Creation</div>
+            <div class="competence-level">Canva, Figma, copywriting</div>
+          </div>
+          <div class="competence-item">
+            <span class="competence-icon">🔍</span>
+            <div class="competence-name">SEO/SEM</div>
+            <div class="competence-level">Google Search Console, optimisation</div>
+          </div>
+          <div class="competence-item">
+            <span class="competence-icon">📱</span>
+            <div class="competence-name">Social Media</div>
+            <div class="competence-level">LinkedIn, Instagram, stratégie</div>
+          </div>
+          <div class="competence-item">
+            <span class="competence-icon">📈</span>
+            <div class="competence-name">Growth Marketing</div>
+            <div class="competence-level">Acquisition, conversion, rétention</div>
+          </div>
+          <div class="competence-item">
+            <span class="competence-icon">🤝</span>
+            <div class="competence-name">Communication</div>
+            <div class="competence-level">Présentation, négociation, collaboration</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h4>Soft skills développées</h4>
+          <p>Au-delà des compétences techniques, j'ai développé mon autonomie, ma capacité d'adaptation et mon sens de l'initiative dans un environnement en constante évolution.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>💡 Apprentissages clés</h3>
+        <p>Cette expérience a été riche en enseignements, tant sur le plan professionnel que personnel. Chaque défi rencontré a été une occasion de grandir et de repenser mes approches.</p>
+
+        <ul class="key-points">
+          <li><strong>Culture startup</strong> : Agilité, rapidité d'exécution et adaptation constante aux changements</li>
+          <li><strong>Importance des données</strong> : Toute décision marketing doit s'appuyer sur des métriques fiables</li>
+          <li><strong>Authenticity matters</strong> : La sincérité dans la communication crée des liens durables avec l'audience</li>
+          <li><strong>Collaboration transversale</strong> : Le succès naît de la synergie entre toutes les équipes</li>
+          <li><strong>Innovation continue</strong> : L'expérimentation constante est nécessaire pour rester compétitif</li>
+          <li><strong>Impact social</strong> : Le marketing peut être un vecteur de changement positif pour la société</li>
+        </ul>
+
+        <div class="callout">
+          <h4>Révélation entrepreneuriale</h4>
+          <p>Observer de près la création et le développement d'une startup m'a fait comprendre que l'entrepreneuriat pourrait être ma voie, combinant créativité, impact social et défis stimulants.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🌟 Moments marquants</h3>
+        <p>Certains moments de ce stage resteront gravés dans ma mémoire, illustrant parfaitement l'esprit Leker et l'impact que peut avoir une équipe soudée et passionnée.</p>
+
+        <div class="mission-detail">
+          <div class="mission-title">🚀 Premier post viral</div>
+          <div class="mission-period">Semaine 4</div>
+          <p>Le premier post LinkedIn que j'ai créé a généré plus de 10 000 impressions en 24h. Ce moment a confirmé l'efficacité de notre nouvelle stratégie et m'a donné confiance en mes capacités.</p>
+        </div>
+
+        <div class="mission-detail">
+          <div class="mission-title">💬 Sessions de brainstorming</div>
+          <div class="mission-period">Hebdomadaires</div>
+          <p>Les réunions créatives avec l'équipe étaient des moments d'effervescence intellectuelle où chaque idée était accueillie et explorée. Cette approche collaborative a nourri ma créativité.</p>
+        </div>
+
+        <div class="mission-detail">
+          <div class="mission-title">🎯 Présentation des résultats</div>
+          <div class="mission-period">Semaine 7</div>
+          <p>Présenter mes résultats à l'équipe dirigeante a été un moment de fierté intense. Voir l'impact concret de mon travail reconnu par les fondateurs a été très gratifiant.</p>
+        </div>
+
+        <p>Ces moments illustrent parfaitement la culture d'entreprise de Leker : bienveillance, reconnaissance du mérite et célébration des succès collectifs. Cette ambiance positive a été un facteur clé de mon épanouissement durant le stage.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>Contact : lilian.mahier.22@neoma-bs.com · Dernière mise à jour : <span id="last-updated"></span></p>
+    </div>
+  </footer>
+
+  <script>
+    // Date de mise à jour
+    (function(){
+      var e = document.getElementById('last-updated');
+      if(e){
+        var d = new Date();
+        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
+        e.textContent = s;
+      }
+    })();
+
+    // Menu dropdown
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownBtn = document.querySelector('.nav-btn');
+      const dropdownContent = document.querySelector('.nav-dropdown-content');
+      
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownContent.style.display === 'block';
+        dropdownContent.style.display = isOpen ? 'none' : 'block';
+        dropdownBtn.setAttribute('aria-expanded', !isOpen);
+      });
+      
+      document.addEventListener('click', function() {
+        dropdownContent.style.display = 'none';
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
