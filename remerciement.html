@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Remerciements à tous ceux qui ont contribué au projet Leker">
+  <title>Remerciements - Leker</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #c53d7d;
+      --card: #0b1220;
+      --border: #1e293b;
+      --gradient-1: linear-gradient(135deg, #c53d7d 0%, #8b5fbf 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .logo-text {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .site-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .meta span {
+      display: block;
+    }
+
+    .meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-btn {
+      background: var(--gradient-1);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--card);
+      min-width: 280px;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      z-index: 1000;
+      margin-top: 0.5rem;
+    }
+
+    .nav-dropdown-content a {
+      color: var(--text);
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-dropdown-content a:hover {
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .nav-dropdown-content a.current {
+      background: var(--panel);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-content {
+      display: block;
+    }
+
+    main {
+      padding: 3rem 0;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .callout {
+      background: linear-gradient(135deg, var(--accent)15, var(--accent)05);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .callout h4 {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .gratitude-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .gratitude-item {
+      background: var(--panel);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .gratitude-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-1);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .gratitude-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .gratitude-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .gratitude-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .team-appreciation {
+      background: var(--gradient-1);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+      color: white;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-appreciation::before {
+      content: '💜';
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .team-appreciation-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .team-appreciation h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .team-appreciation p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.95);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .key-points {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .key-points li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .key-points li:before {
+      content: '▶';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    .key-points li:last-child {
+      border-bottom: none;
+    }
+
+    .final-message {
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 3rem;
+      text-align: center;
+      margin: 3rem 0;
+      border: 2px solid var(--border);
+      position: relative;
+    }
+
+    .final-message::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .final-message h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .final-message p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .social-links a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .social-links a:hover {
+      background: var(--panel);
+      border-color: var(--accent);
+    }
+
+    .site-footer {
+      background: var(--panel);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .header-left {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .site-header h1 {
+        font-size: 2rem;
+      }
+      
+      .gratitude-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .team-appreciation {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo-section">
+            <div class="logo-text">Leker</div>
+          </div>
+          <div class="header-text">
+            <h1>Remerciements</h1>
+            <p class="subtitle">À tous ceux qui ont rendu ce projet possible</p>
+            <div class="meta">
+              <span><strong>Équipe</strong> : Lilian, Nasser, Sarah</span>
+              <span><strong>Gratitude</strong> : Infinie ❤️</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="nav-dropdown">
+            <button class="nav-btn">Navigation ▼</button>
+            <div class="nav-dropdown-content">
+              <a href="index.html">Accueil</a>
+              <a href="equipe.html">Équipe</a>
+              <a href="fonctionnalites.html">Fonctionnalités</a>
+              <a href="defi-technique.html">Défi Technique</a>
+              <a href="remerciements.html" class="current">Remerciements</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a> > <span>Remerciements</span>
+    </nav>
+
+    <section>
+      <h2>Gratitude et reconnaissance</h2>
+      
+      <div class="callout">
+        <h4>Un projet collaboratif</h4>
+        <p>Leker n'aurait jamais vu le jour sans le soutien, l'inspiration et la collaboration de nombreuses personnes extraordinaires.</p>
+      </div>
+
+      <div class="team-appreciation">
+        <div class="team-appreciation-content">
+          <h3>Notre équipe exceptionnelle</h3>
+          <p>
+            Lilian, Nasser et Sarah ont formé une équipe extraordinaire, alliant créativité, 
+            expertise technique et passion commune. Chaque membre a apporté ses compétences 
+            uniques pour créer quelque chose de vraiment spécial. Cette synergie a été la 
+            clé du succès de Leker.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Remerciements académiques</h3>
+        
+        <div class="gratitude-grid">
+          <div class="gratitude-item">
+            <span class="gratitude-icon">👨‍🏫</span>
+            <div class="gratitude-title">Nos professeurs</div>
+            <div>Merci à tous nos enseignants qui nous ont transmis les connaissances et compétences nécessaires pour mener à bien ce projet.</div>
+          </div>
+          <div class="gratitude-item">
+            <span class="gratitude-icon">🏫</span>
+            <div class="gratitude-title">Notre établissement</div>
+            <div>Reconnaissance à notre école pour l'environnement, les ressources et les opportunités offertes pour développer nos compétences.</div>
+          </div>
+          <div class="gratitude-item">
+            <span class="gratitude-icon">👥</span>
+            <div class="gratitude-title">Nos camarades</div>
+            <div>La collaboration et les échanges d'idées avec nos collègues étudiants ont enrichi notre expérience d'apprentissage.</div>
+          </div>
+          <div class="gratitude-item">
+            <span class="gratitude-icon">📊</span>
+            <div class="gratitude-title">Jurys et évaluateurs</div>
+            <div>Merci à ceux qui évalueront notre travail avec bienveillance et professionnalisme.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Soutiens personnels</h3>
+        
+        <ul class="key-points">
+          <li>Nos familles pour leur soutien inconditionnel et leur patience</li>
+          <li>Nos amis pour leurs encouragements constants et retours constructifs</li>
+          <li>Nos mentors qui nous ont guidés dans les moments difficiles</li>
+          <li>Tous ceux qui ont testé Leker et fourni des retours précieux</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Communauté technique</h3>
+        
+        <div class="gratitude-grid">
+          <div class="gratitude-item">
+            <span class="gratitude-icon">🌐</span>
+            <div class="gratitude-title">Open Source</div>
+            <div>Aux développeurs du monde entier qui partagent leurs connaissances et rendent l'innovation accessible.</div>
+          </div>
+          <div class="gratitude-item">
+            <span class="gratitude-icon">💡</span>
+            <div class="gratitude-title">Sources d'inspiration</div>
+            <div>Aux plateformes et créateurs qui nous ont inspirés à repenser l'expérience du streaming.</div>
+          </div>
+          <div class="gratitude-item">
+            <span class="gratitude-icon">📚</span>
+            <div class="gratitude-title">Documentation</div>
+            <div>Aux créateurs de documentation technique claire et aux tutoriels qui nous ont aidés.</div>
+          </div>
+          <div class="gratitude-item">
+            <span class="gratitude-icon">🎨</span>
+            <div class="gratitude-title">Communauté design</div>
+            <div>Pour l'inspiration créative et les ressources qui ont façonné l'identité visuelle de Leker.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="final-message">
+        <h3>Un projet, des cœurs unis</h3>
+        <p>
+          "Leker n'est pas seulement le résultat de notre travail, mais aussi le fruit 
+          de toutes les personnes qui ont cru en nous et nous ont accompagnés dans cette 
+          aventure extraordinaire. Merci du fond du cœur à chacun d'entre vous."
+        </p>
+        <p style="margin-top: 1.5rem; font-weight: 600; color: var(--accent);">
+          — L'équipe Leker : Lilian, Nasser & Sarah 💜
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/lilian-mahier-88019b251" target="_blank">Lilian LinkedIn</a>
+        <a href="https://www.linkedin.com/in/nassermadaran/" target="_blank">Nasser LinkedIn</a>
+        <a href="https://www.linkedin.com/in/sarah-oiknine/" target="_blank">Sarah LinkedIn</a>
+      </div>
+      <p>&copy; 2024 Leker. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownBtn = document.querySelector('.nav-btn');
+      const dropdownContent = document.querySelector('.nav-dropdown-content');
+      
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownContent.style.display === 'block';
+        dropdownContent.style.display = isOpen ? 'none' : 'block';
+      });
+      
+      document.addEventListener('click', function() {
+        dropdownContent.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
