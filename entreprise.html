@@ -3,287 +3,710 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2. Présentation de l'entreprise</title>
+  <meta name="description" content="Présentation détaillée de l'entreprise Leker">
+  <title>Présentation de l'entreprise - Lilian Mahier</title>
   <style>
-:root {
-  --bg: #0f172a;
-  --panel: #111827;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --accent: #22c55e;
-  --card: #0b1220;
-  --border: #1f2937;
-}
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #c53d7d;
+      --card: #0b1220;
+      --border: #1e293b;
+      --gradient-1: linear-gradient(135deg, #c53d7d 0%, #8b5fbf 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #c53d7d 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', Helvetica, Arial, sans-serif;
-  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
-  color: var(--text);
-  line-height: 1.6;
-  min-height: 100vh;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.container { 
-  width: 100%; 
-  max-width: 1000px; 
-  margin: 0 auto; 
-  padding: 0 16px; 
-}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
 
-.skip-link { 
-  position: absolute; 
-  left: -9999px; 
-  z-index: 1000;
-}
-.skip-link:focus { 
-  left: 16px; 
-  top: 16px; 
-  background: #fff; 
-  color: #000; 
-  padding: 8px 12px; 
-  border-radius: 6px; 
-  text-decoration: none;
-}
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--accent);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+      border-radius: 4px;
+    }
 
-.site-header { 
-  padding: 40px 0 24px; 
-  border-bottom: 1px solid var(--border); 
-  background: radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,0.25), transparent 60%); 
-}
-.site-header h1 { 
-  margin: 0 0 8px; 
-  font-size: 34px; 
-  letter-spacing: -0.02em; 
-}
-.subtitle { 
-  margin: 0 0 8px; 
-  color: var(--muted); 
-}
-.meta { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-  gap: 6px 16px; 
-  margin: 12px 0 0; 
-  color: var(--muted); 
-}
-.meta strong { 
-  color: var(--text); 
-}
+    .skip-link:focus {
+      top: 6px;
+    }
 
-.site-nav ul { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 8px; 
-  list-style: none; 
-  padding: 0; 
-  margin: 16px 0 0; 
-}
-.site-nav a, .site-nav .dropbtn { 
-  display: inline-block; 
-  padding: 8px 12px; 
-  border: 1px solid var(--border); 
-  border-radius: 10px; 
-  color: var(--text); 
-  text-decoration: none; 
-  background: rgba(255,255,255,0.02); 
-  cursor: pointer; 
-  font-family: inherit;
-  font-size: inherit;
-  transition: all 0.2s ease;
-}
-.site-nav a:hover, .site-nav .dropbtn:hover { 
-  border-color: var(--accent); 
-  box-shadow: 0 0 0 2px rgba(34,197,94,0.2); 
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-.site-nav li.dropdown { 
-  position: relative; 
-}
-.site-nav li.dropdown > .dropbtn::after {
-  content: ' ▼';
-  font-size: 0.8em;
-  margin-left: 8px;
-}
-.site-nav li.dropdown .dropdown-menu { 
-  position: absolute; 
-  top: 110%; 
-  left: 0; 
-  min-width: 280px; 
-  background: var(--panel); 
-  border: 1px solid var(--border); 
-  border-radius: 12px; 
-  padding: 8px; 
-  display: none; 
-  box-shadow: 0 12px 30px rgba(0,0,0,0.3); 
-  z-index: 50; 
-  list-style: none;
-}
-.site-nav li.dropdown .dropdown-menu li { 
-  list-style: none; 
-  margin: 0; 
-}
-.site-nav li.dropdown .dropdown-menu a { 
-  display: block; 
-  padding: 8px 10px; 
-  border-radius: 8px; 
-  border: none; 
-  background: transparent; 
-  white-space: nowrap;
-}
-.site-nav li.dropdown .dropdown-menu a:hover { 
-  background: rgba(255,255,255,0.04); 
-}
-.site-nav li.dropdown:hover .dropdown-menu, 
-.site-nav li.dropdown:focus-within .dropdown-menu { 
-  display: block; 
-}
+    .site-header {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+      position: relative;
+    }
 
-.actions { 
-  margin-top: 16px; 
-}
-.btn { 
-  padding: 10px 14px; 
-  border-radius: 10px; 
-  border: 1px solid var(--border); 
-  background: var(--panel); 
-  color: var(--text); 
-  cursor: pointer; 
-  font-family: inherit;
-  font-size: inherit;
-  transition: all 0.2s ease;
-}
-.btn:hover { 
-  border-color: var(--accent); 
-}
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
 
-main { 
-  padding: 32px 0 64px; 
-}
-section { 
-  margin: 28px 0; 
-}
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
 
-h2 { 
-  font-size: 24px; 
-  margin: 0 0 12px; 
-  letter-spacing: -0.01em; 
-}
-h3 {
-  margin: 0 0 12px;
-  color: var(--text);
-}
-.card { 
-  background: var(--card); 
-  border: 1px solid var(--border); 
-  border-radius: 14px; 
-  padding: 20px; 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-  margin-bottom: 16px;
-}
+    .logo-section {
+      flex-shrink: 0;
+    }
 
-.grid-2 { 
-  display: grid; 
-  gap: 16px; 
-  grid-template-columns: 1fr; 
-}
-@media (min-width: 800px) { 
-  .grid-2 { 
-    grid-template-columns: 1fr 1fr; 
-  } 
-}
+    .logo-text {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
 
-.site-footer { 
-  border-top: 1px solid var(--border); 
-  padding: 16px 0; 
-  color: var(--muted); 
-  background: rgba(255,255,255,0.02); 
-  margin-top: auto;
-}
+    .header-text {
+      flex: 1;
+    }
 
-ul {
-  margin: 12px 0;
-  padding-left: 18px;
-}
-ul li {
-  margin: 6px 0;
-}
+    .site-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
 
-p {
-  margin: 12px 0;
-}
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
 
-@media print {
-  :root { --text: #000; --muted: #333; }
-  body { background: #fff !important; color: #000 !important; }
-  .site-header { background: none !important; }
-  .site-nav, .actions { display: none !important; }
-  .card { box-shadow: none; border-color: #ddd; }
-  a { color: #000; text-decoration: none; }
-  .container { max-width: 100%; }
-}
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
 
-@media (max-width: 768px) {
-  .site-header h1 { font-size: 28px; }
-  .meta { grid-template-columns: 1fr; }
-  .site-nav ul { flex-direction: column; align-items: flex-start; }
-  .site-nav li.dropdown .dropdown-menu { position: static; display: none; box-shadow: none; margin-top: 8px; }
-  .grid-2 { grid-template-columns: 1fr; }
-}
+    .meta span {
+      display: block;
+    }
+
+    .meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .tuteur-info {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tuteur-info strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-btn {
+      background: var(--gradient-1);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--card);
+      min-width: 280px;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      z-index: 1000;
+      margin-top: 0.5rem;
+    }
+
+    .nav-dropdown-content a {
+      color: var(--text);
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-dropdown-content a:hover {
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .nav-dropdown-content a.current {
+      background: var(--panel);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-content {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main {
+      padding: 3rem 0;
+      min-height: 80vh;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .callout {
+      background: linear-gradient(135deg, var(--accent)15, var(--accent)05);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .callout::before {
+      content: '💡';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .callout h4 {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-item {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .team-photos {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 2rem 0;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .team-member {
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .team-member a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .member-card {
+      background: var(--panel);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 2px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      background: var(--accent);
+    }
+
+    .member-name {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .member-role {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .member-card:hover .member-name,
+    .member-card:hover .member-role {
+      color: white;
+    }
+
+    .key-points {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .key-points li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .key-points li:before {
+      content: '▶';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .key-points li:last-child {
+      border-bottom: none;
+    }
+
+    .site-footer {
+      background: var(--panel);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-item {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .site-header h1 {
+        font-size: 2rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-right {
+        align-items: flex-start;
+      }
+
+      .tuteur-info {
+        text-align: left;
+      }
+      
+      .stats-grid,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+
+      .team-photos {
+        justify-content: center;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .nav-dropdown,
+      .site-footer {
+        display: none;
+      }
+      
+      .card {
+        border: 1px solid #ddd;
+        box-shadow: none;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
+
   <header class="site-header" role="banner">
     <div class="container">
-      <h1>Présentation de l'entreprise</h1>
-      <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
-      <div class="meta">
-        <span><strong>Étudiant·e</strong> : Lilian Mahier</span>
-        <span><strong>Période</strong> : 02/05/2025 - 30/06/2025 — <em>8 semaines</em></span>
-        <span><strong>Tuteur·rice</strong> : Nasser Madaran</span>
-      </div>
-      <nav class="site-nav" aria-label="Navigation principale">
-        <ul>
-          <li class="dropdown">
-            <button class="dropbtn">Pages</button>
-            <ul class="dropdown-menu">
-              <li><a href="informations.html">1. Informations sur le stage</a></li>
-              <li><a href="entreprise.html">2. Présentation de l'entreprise</a></li>
-              <li><a href="retour.html">3. Retour d'expérience</a></li>
-              <li><a href="analyse.html">4. Analyse critique</a></li>
-              <li><a href="projet.html">5. Projet professionnel</a></li>
-            </ul>
-          </li>
-          <li><a href="index.html">Accueil</a></li>
-        </ul>
-      </nav>
-      <div class="actions">
-        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo-section">
+            <div class="logo-text">Leker</div>
+          </div>
+          <div class="header-text">
+            <h1>Rapport de stage</h1>
+            <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
+            <div class="meta">
+              <span><strong>Étudiant</strong> : Lilian Mahier</span>
+              <span><strong>Période</strong> : 8 semaines en 2024</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="tuteur-info">
+            <span><strong>Tuteur de stage</strong></span><br>
+            <span>Nasser Madaran</span><br>
+            <span>CEO & Fondateur</span>
+          </div>
+          
+          <div class="nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true" aria-expanded="false">
+              Navigation ▼
+            </button>
+            <div class="nav-dropdown-content">
+              <a href="index.html">Accueil</a>
+              <a href="informations.html">1. Informations sur le stage</a>
+              <a href="entreprise.html" class="current">2. Présentation de l'entreprise</a>
+              <a href="retour.html">3. Retour d'expérience</a>
+              <a href="analyse.html">4. Analyse critique</a>
+              <a href="projet.html">5. Projet professionnel</a>
+              <a href="defi-technique.html">6. Défi technique</a>
+              <a href="remerciements.html">7. Remerciements</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <main id="contenu" class="container" role="main">
-    <section>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Activité & secteur</h3>
-          <p>Plateforme (SaaS) de communication éthique et écologique.</p>
-          <h3>Histoire</h3>
-          <p>Créée en 2023. Contexte de création : volonté d'amener une communication plus éthique et écologique.</p>
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a> > <span>Présentation de l'entreprise</span>
+    </nav>
+
+    <section aria-labelledby="titre-entreprise">
+      <h2 id="titre-entreprise">2. Présentation de l'entreprise Leker</h2>
+      
+      <div class="callout">
+        <h4>Mission de Leker</h4>
+        <p>Révolutionner la communication d'entreprise en proposant des solutions éthiques et écologiques qui allient performance et responsabilité sociale.</p>
+      </div>
+
+      <div class="card">
+        <h3>🏢 Identité et histoire</h3>
+        <p>Fondée en 2023, Leker est née de la conviction que la communication d'entreprise peut et doit évoluer vers plus d'éthique et de durabilité. Cette startup parisienne développe une plateforme SaaS innovante qui aide les entreprises à adopter une communication plus responsable.</p>
+
+        <div class="callout">
+          <h4>Genèse du projet</h4>
+          <p>Leker répond à un besoin croissant du marché : celui des entreprises qui souhaitent aligner leur communication avec leurs valeurs environnementales et sociales.</p>
         </div>
-        <div class="card">
-          <h3>Organisation</h3>
-          <p>Structure de l'équipe pendant le stage : CEO, CSO, 2 Growth Marketing Managers (stagiaires).</p>
-          <h3>Pratiques principales</h3>
-          <ul>
-            <li>Communication digitale orientée données (KPI, tests A/B, itérations rapides)</li>
-            <li>Animation des communautés sur LinkedIn et Instagram</li>
-            <li>SEO et migration de contenus</li>
-          </ul>
+
+        <p>Le nom "Leker" reflète cette approche centrée sur l'humain et les valeurs. L'entreprise se positionne comme un acteur du changement, proposant des alternatives concrètes aux pratiques de communication traditionnelles souvent considérées comme superficielles ou peu authentiques.</p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">2023</span>
+            <span class="stat-label">Année de création</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Collaborateurs</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">SaaS</span>
+            <span class="stat-label">Modèle économique</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Paris</span>
+            <span class="stat-label">Siège social</span>
+          </div>
         </div>
+      </div>
+
+      <div class="card">
+        <h3>👥 L'équipe dirigeante</h3>
+        <p>L'équipe Leker réunit des profils complémentaires animés par une vision commune : créer un impact positif à travers la transformation de la communication d'entreprise. Cette diversité d'expertises constitue un atout majeur pour la startup.</p>
+
+        <div class="team-photos">
+          <div class="team-member">
+            <a href="https://www.linkedin.com/in/nassermadaran/" target="_blank" rel="noopener noreferrer">
+              <div class="member-card">
+                <div class="member-name">Nasser Madaran</div>
+                <div class="member-role">CEO & Fondateur</div>
+              </div>
+            </a>
+          </div>
+          <div class="team-member">
+            <a href="https://www.linkedin.com/in/sarah-oiknine/" target="_blank" rel="noopener noreferrer">
+              <div class="member-card">
+                <div class="member-name">Sarah Oiknine</div>
+                <div class="member-role">CSO & Co-fondatrice</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <p>L'équipe dirigeante combine expertise technique et vision stratégique. Nasser Madaran apporte son expérience entrepreneuriale et sa passion pour l'innovation sociale, tandis que Sarah Oiknine pilote le développement stratégique et les partenariats clés.</p>
+      </div>
+
+      <div class="card">
+        <h3>💼 Produit et services</h3>
+        <p>Leker développe une plateforme SaaS complète qui accompagne les entreprises dans leur transition vers une communication plus éthique et durable. Cette solution technologique s'appuie sur des algorithmes d'analyse et des frameworks méthodologiques innovants.</p>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <span class="feature-icon">🔍</span>
+            <div class="feature-title">Analyse de communication</div>
+            <div class="feature-desc">Audit automatisé des pratiques de communication existantes</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">📊</span>
+            <div class="feature-title">Tableaux de bord</div>
+            <div class="feature-desc">Métriques d'impact et de performance en temps réel</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🎯</span>
+            <div class="feature-title">Recommandations</div>
+            <div class="feature-desc">Suggestions personnalisées d'amélioration</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🌱</span>
+            <div class="feature-title">Impact écologique</div>
+            <div class="feature-desc">Mesure de l'empreinte environnementale</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h4>Innovation technologique</h4>
+          <p>La plateforme intègre des technologies d'IA pour analyser et optimiser automatiquement les stratégies de communication selon des critères éthiques et écologiques.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🎯 Positionnement marché</h3>
+        <p>Leker se positionne sur un marché en pleine expansion : celui de la communication responsable. Avec la montée des préoccupations environnementales et sociales, les entreprises recherchent activement des solutions pour aligner leur communication avec leurs valeurs.</p>
+
+        <p>Cette startup opère dans un secteur où la demande croît exponentiellement, porté par les nouvelles réglementations européennes et les attentes grandissantes des consommateurs en matière de transparence et d'authenticité.</p>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <span class="feature-icon">🎯</span>
+            <div class="feature-title">Marché cible</div>
+            <div class="feature-desc">PME et grandes entreprises soucieuses d'impact</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">💰</span>
+            <div class="feature-title">Modèle SaaS</div>
+            <div class="feature-desc">Abonnement mensuel avec options modulaires</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🌍</span>
+            <div class="feature-title">Expansion</div>
+            <div class="feature-desc">France puis Europe dans les 24 mois</div>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🤝</span>
+            <div class="feature-title">Partenariats</div>
+            <div class="feature-desc">Collaborations avec ONG et institutions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🌟 Culture d'entreprise</h3>
+        <p>La culture Leker se caractérise par une approche humaine et collaborative, où chaque membre de l'équipe contribue activement aux décisions stratégiques. Cette horizontalité favorise l'innovation et l'engagement de tous.</p>
+
+        <div class="callout">
+          <h4>Valeurs fondamentales</h4>
+          <p>Transparence, impact positif, innovation responsable et collaboration sont au cœur de l'ADN Leker.</p>
+        </div>
+
+        <p>L'entreprise prône le télétravail hybride, l'autonomie dans l'organisation du travail et la formation continue. Cette approche moderne du management crée un environnement propice à l'épanouissement professionnel et à la créativité.</p>
+
+        <ul class="key-points">
+          <li><strong>Transparence</strong> : Communication ouverte et décisions partagées</li>
+          <li><strong>Impact</strong> : Chaque action doit créer de la valeur positive</li>
+          <li><strong>Innovation</strong> : Expérimentation constante et amélioration continue</li>
+          <li><strong>Collaboration</strong> : Travail d'équipe et entraide mutuelle</li>
+          <li><strong>Flexibilité</strong> : Adaptation aux besoins individuels et collectifs</li>
+        </ul>
       </div>
     </section>
   </main>
@@ -295,37 +718,32 @@ p {
   </footer>
 
   <script>
+    // Date de mise à jour
+    (function(){
+      var e = document.getElementById('last-updated');
+      if(e){
+        var d = new Date();
+        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
+        e.textContent = s;
+      }
+    })();
+
+    // Menu dropdown
     document.addEventListener('DOMContentLoaded', function() {
-      const dropdown = document.querySelector('.dropdown');
-      const dropbtn = document.querySelector('.dropbtn');
-      const dropdownMenu = document.querySelector('.dropdown-menu');
+      const dropdownBtn = document.querySelector('.nav-btn');
+      const dropdownContent = document.querySelector('.nav-dropdown-content');
       
-      if (dropbtn && dropdownMenu) {
-        dropbtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const isOpen = dropdownMenu.style.display === 'block';
-          dropdownMenu.style.display = isOpen ? 'none' : 'block';
-          dropbtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-        });
-        
-        document.addEventListener('click', function(e) {
-          if (!dropdown.contains(e.target)) {
-            dropdownMenu.style.display = 'none';
-            dropbtn.setAttribute('aria-expanded', 'false');
-          }
-        });
-      }
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownContent.style.display === 'block';
+        dropdownContent.style.display = isOpen ? 'none' : 'block';
+        dropdownBtn.setAttribute('aria-expanded', !isOpen);
+      });
       
-      const lastUpdated = document.getElementById('last-updated');
-      if (lastUpdated) {
-        const date = new Date();
-        const formattedDate = [
-          date.getDate().toString().padStart(2,'0'), 
-          (date.getMonth()+1).toString().padStart(2,'0'), 
-          date.getFullYear()
-        ].join('/');
-        lastUpdated.textContent = formattedDate;
-      }
+      document.addEventListener('click', function() {
+        dropdownContent.style.display = 'none';
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      });
     });
   </script>
 </body>
