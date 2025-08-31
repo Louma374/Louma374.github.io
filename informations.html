@@ -3,238 +3,468 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rapport de stage – site de présentation aligné sur les critères d'évaluation (5 critères).">
-  <title>Rapport de stage – Accueil</title>
+  <meta name="description" content="Informations détaillées sur le stage chez Leker">
+  <title>Informations sur le stage - Lilian Mahier</title>
   <style>
-:root {
-  --bg: #0f172a;
-  --panel: #111827;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --accent: #22c55e;
-  --card: #0b1220;
-  --border: #1f2937;
-}
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #c53d7d;
+      --card: #0b1220;
+      --border: #1e293b;
+      --gradient-1: linear-gradient(135deg, #c53d7d 0%, #8b5fbf 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #c53d7d 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', Helvetica, Arial, sans-serif;
-  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
-  color: var(--text);
-  line-height: 1.6;
-  min-height: 100vh;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.container { 
-  width: 100%; 
-  max-width: 1000px; 
-  margin: 0 auto; 
-  padding: 0 16px; 
-}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
 
-.skip-link { 
-  position: absolute; 
-  left: -9999px; 
-  z-index: 1000;
-}
-.skip-link:focus { 
-  left: 16px; 
-  top: 16px; 
-  background: #fff; 
-  color: #000; 
-  padding: 8px 12px; 
-  border-radius: 6px; 
-  text-decoration: none;
-}
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--accent);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+      border-radius: 4px;
+    }
 
-.site-header { 
-  padding: 40px 0 24px; 
-  border-bottom: 1px solid var(--border); 
-  background: radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,0.25), transparent 60%); 
-}
-.site-header h1 { 
-  margin: 0 0 8px; 
-  font-size: 34px; 
-  letter-spacing: -0.02em; 
-}
-.subtitle { 
-  margin: 0 0 8px; 
-  color: var(--muted); 
-}
-.meta { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-  gap: 6px 16px; 
-  margin: 12px 0 0; 
-  color: var(--muted); 
-}
-.meta strong { 
-  color: var(--text); 
-}
+    .skip-link:focus {
+      top: 6px;
+    }
 
-.site-nav ul { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 8px; 
-  list-style: none; 
-  padding: 0; 
-  margin: 16px 0 0; 
-}
-.site-nav a, .site-nav .dropbtn { 
-  display: inline-block; 
-  padding: 8px 12px; 
-  border: 1px solid var(--border); 
-  border-radius: 10px; 
-  color: var(--text); 
-  text-decoration: none; 
-  background: rgba(255,255,255,0.02); 
-  cursor: pointer; 
-  font-family: inherit;
-  font-size: inherit;
-  transition: all 0.2s ease;
-}
-.site-nav a:hover, .site-nav .dropbtn:hover { 
-  border-color: var(--accent); 
-  box-shadow: 0 0 0 2px rgba(34,197,94,0.2); 
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-/* Dropdown */
-.site-nav li.dropdown { 
-  position: relative; 
-}
-.site-nav li.dropdown > .dropbtn::after {
-  content: ' ▼';
-  font-size: 0.8em;
-  margin-left: 8px;
-}
-.site-nav li.dropdown .dropdown-menu { 
-  position: absolute; 
-  top: 110%; 
-  left: 0; 
-  min-width: 280px; 
-  background: var(--panel); 
-  border: 1px solid var(--border); 
-  border-radius: 12px; 
-  padding: 8px; 
-  display: none; 
-  box-shadow: 0 12px 30px rgba(0,0,0,0.3); 
-  z-index: 50; 
-  list-style: none;
-}
-.site-nav li.dropdown .dropdown-menu li { 
-  list-style: none; 
-  margin: 0; 
-}
-.site-nav li.dropdown .dropdown-menu a { 
-  display: block; 
-  padding: 8px 10px; 
-  border-radius: 8px; 
-  border: none; 
-  background: transparent; 
-  white-space: nowrap;
-}
-.site-nav li.dropdown .dropdown-menu a:hover { 
-  background: rgba(255,255,255,0.04); 
-}
-.site-nav li.dropdown:hover .dropdown-menu, 
-.site-nav li.dropdown:focus-within .dropdown-menu { 
-  display: block; 
-}
+    .site-header {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+      position: relative;
+    }
 
-.actions { 
-  margin-top: 16px; 
-}
-.btn { 
-  padding: 10px 14px; 
-  border-radius: 10px; 
-  border: 1px solid var(--border); 
-  background: var(--panel); 
-  color: var(--text); 
-  cursor: pointer; 
-  font-family: inherit;
-  font-size: inherit;
-  transition: all 0.2s ease;
-}
-.btn:hover { 
-  border-color: var(--accent); 
-}
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
 
-main { 
-  padding: 32px 0 64px; 
-}
-section { 
-  margin: 28px 0; 
-}
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
 
-h2 { 
-  font-size: 24px; 
-  margin: 0 0 12px; 
-  letter-spacing: -0.01em; 
-}
-.card { 
-  background: var(--card); 
-  border: 1px solid var(--border); 
-  border-radius: 14px; 
-  padding: 20px; 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-  margin-bottom: 16px;
-}
+    .logo-section {
+      flex-shrink: 0;
+    }
 
-.lead { 
-  color: var(--muted); 
-  margin: 0 0 12px; 
-}
-.key-points { 
-  margin: 0; 
-  padding-left: 18px; 
-}
-.key-points li { 
-  margin: 8px 0; 
-}
+    .logo-text {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
 
-.placeholder { 
-  color: var(--muted); 
-}
+    .header-text {
+      flex: 1;
+    }
 
-.site-footer { 
-  border-top: 1px solid var(--border); 
-  padding: 16px 0; 
-  color: var(--muted); 
-  background: rgba(255,255,255,0.02); 
-  margin-top: auto;
-}
+    .site-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
 
-/* Print styles */
-@media print {
-  :root { --text: #000; --muted: #333; }
-  body { background: #fff !important; color: #000 !important; }
-  .site-header { background: none !important; }
-  .site-nav, .actions { display: none !important; }
-  .card { box-shadow: none; border-color: #ddd; }
-  a { color: #000; text-decoration: none; }
-  .container { max-width: 100%; }
-}
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .site-header h1 { 
-    font-size: 28px; 
-  }
-  .meta { 
-    grid-template-columns: 1fr; 
-  }
-  .site-nav ul { 
-    flex-direction: column; 
-    align-items: flex-start; 
-  }
-  .site-nav li.dropdown .dropdown-menu { 
-    position: static; 
-    display: none; 
-    box-shadow: none; 
-    margin-top: 8px; 
-  }
-}
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .meta span {
+      display: block;
+    }
+
+    .meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .tuteur-info {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tuteur-info strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-btn {
+      background: var(--gradient-1);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--card);
+      min-width: 280px;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      z-index: 1000;
+      margin-top: 0.5rem;
+    }
+
+    .nav-dropdown-content a {
+      color: var(--text);
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-dropdown-content a:hover {
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .nav-dropdown-content a.current {
+      background: var(--panel);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-content {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main {
+      padding: 3rem 0;
+      min-height: 80vh;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .callout {
+      background: linear-gradient(135deg, var(--accent)15, var(--accent)05);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .callout::before {
+      content: '💡';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .callout h4 {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .info-item {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-value {
+      color: var(--text);
+      font-size: 1.1rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 12px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+    }
+
+    .timeline-content {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .key-points {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .key-points li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .key-points li:before {
+      content: '▶';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .key-points li:last-child {
+      border-bottom: none;
+    }
+
+    .site-footer {
+      background: var(--panel);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .site-header h1 {
+        font-size: 2rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-right {
+        align-items: flex-start;
+      }
+
+      .tuteur-info {
+        text-align: left;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .nav-dropdown,
+      .site-footer {
+        display: none;
+      }
+      
+      .card {
+        border: 1px solid #ddd;
+        box-shadow: none;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -242,43 +472,167 @@ h2 {
 
   <header class="site-header" role="banner">
     <div class="container">
-      <h1>Rapport de stage</h1>
-      <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
-      <div class="meta">
-        <span><strong>Étudiant·e</strong> : Lilian Mahier</span>
-        <span><strong>Période</strong> : 02/05/2025 - 30/06/2025 — <em>8 semaines</em></span>
-        <span><strong>Tuteur·rice</strong> : Nasser Madaran</span>
-      </div>
-      <nav class="site-nav" aria-label="Navigation principale">
-        <ul>
-          <li class="dropdown">
-            <button class="dropbtn" aria-haspopup="true" aria-expanded="false">Pages</button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="informations.html">1. Informations sur le stage</a></li>
-              <li><a href="entreprise.html">2. Présentation de l'entreprise</a></li>
-              <li><a href="retour.html">3. Retour d'expérience</a></li>
-              <li><a href="analyse.html">4. Analyse critique</a></li>
-              <li><a href="projet.html">5. Projet professionnel</a></li>
-            </ul>
-          </li>
-          <li><a href="index.html">Accueil</a></li>
-        </ul>
-      </nav>
-      <div class="actions">
-        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo-section">
+            <div class="logo-text">Leker</div>
+          </div>
+          <div class="header-text">
+            <h1>Rapport de stage</h1>
+            <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
+            <div class="meta">
+              <span><strong>Étudiant</strong> : Lilian Mahier</span>
+              <span><strong>Période</strong> : 8 semaines en 2024</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="tuteur-info">
+            <span><strong>Tuteur de stage</strong></span><br>
+            <span>Nasser Madaran</span><br>
+            <span>CEO & Fondateur</span>
+          </div>
+          
+          <div class="nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true" aria-expanded="false">
+              Navigation ▼
+            </button>
+            <div class="nav-dropdown-content">
+              <a href="index.html">Accueil</a>
+              <a href="informations.html" class="current">1. Informations sur le stage</a>
+              <a href="entreprise.html">2. Présentation de l'entreprise</a>
+              <a href="retour.html">3. Retour d'expérience</a>
+              <a href="analyse.html">4. Analyse critique</a>
+              <a href="projet.html">5. Projet professionnel</a>
+              <a href="defi-technique.html">6. Défi technique</a>
+              <a href="remerciements.html">7. Remerciements</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <main id="contenu" class="container" role="main">
-    <section aria-labelledby="titre-accueil">
-      <h2 id="titre-accueil">Accueil</h2>
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a> > <span>Informations sur le stage</span>
+    </nav>
+
+    <section aria-labelledby="titre-informations">
+      <h2 id="titre-informations">1. Informations sur le stage</h2>
+      
+      <div class="callout">
+        <h4>Contexte académique</h4>
+        <p>Stage obligatoire de fin d'études dans le cadre de ma formation en marketing digital, réalisé au sein d'une startup innovante spécialisée dans la communication éthique.</p>
+      </div>
+
       <div class="card">
-        <p>Bienvenue sur mon rapport de stage. Utilisez le menu « Pages » ci-dessus pour accéder aux sections détaillées qui répondent aux critères d'évaluation.</p>
+        <h3>📋 Informations générales</h3>
+        <p>Ce stage s'inscrit dans le cadre de ma formation académique et répond à l'exigence d'une immersion professionnelle de 8 semaines minimum. Le choix de Leker s'est imposé naturellement de par son positionnement unique sur le marché de la communication responsable.</p>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="info-label">Durée</div>
+            <div class="info-value">8 semaines (56 jours ouvrés)</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Période</div>
+            <div class="info-value">Juin - Août 2024</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Statut</div>
+            <div class="info-value">Stage conventionné</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Rémunération</div>
+            <div class="info-value">Gratification légale</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Localisation</div>
+            <div class="info-value">Paris, France (télétravail hybride)</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Secteur</div>
+            <div class="info-value">SaaS / Communication digitale</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🎯 Objectifs du stage</h3>
+        <p>Les objectifs de ce stage étaient multiples et s'articulaient autour de trois axes principaux : l'acquisition de compétences opérationnelles, la découverte de l'écosystème startup, et la contribution concrète à la croissance de l'entreprise.</p>
+
+        <div class="callout">
+          <h4>Objectif principal</h4>
+          <p>Développer une expertise pratique en growth marketing tout en découvrant les réalités de l'entrepreneuriat dans un environnement innovant.</p>
+        </div>
+
         <ul class="key-points">
-          <li><strong>Entreprise</strong> : Leker — startup (SaaS) de communication éthique et écologique</li>
-          <li><strong>Rôle</strong> : Marketing Communication Manager, orientation growth</li>
-          <li><strong>Faits marquants</strong> : relance de LinkedIn (+3000% impressions, CTR > 20%), série Instagram écologie numérique, atelier AFD, contribution SEO à la migration</li>
+          <li><strong>Opérationnel</strong> : Maîtriser les outils et stratégies de marketing digital</li>
+          <li><strong>Stratégique</strong> : Comprendre les enjeux business d'une startup en croissance</li>
+          <li><strong>Personnel</strong> : Confirmer mon orientation professionnelle</li>
+          <li><strong>Contributif</strong> : Apporter une valeur mesurable à l'entreprise</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📅 Chronologie du stage</h3>
+        <p>Le stage s'est déroulé selon une progression logique, alternant phases d'intégration, de montée en compétences et de responsabilisation croissante. Cette approche graduelle a permis une immersion optimale dans l'écosystème Leker.</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Semaines 1-2</div>
+              <div class="timeline-title">Intégration et découverte</div>
+              <p>Immersion dans l'entreprise, compréhension du produit, rencontre de l'équipe et analyse de l'existant marketing.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Semaines 3-4</div>
+              <div class="timeline-title">Audit et stratégie</div>
+              <p>Audit complet de la présence sociale, définition des axes d'amélioration et élaboration d'une stratégie de contenu.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Semaines 5-6</div>
+              <div class="timeline-title">Mise en œuvre</div>
+              <p>Lancement de la nouvelle stratégie LinkedIn, création de contenu et optimisation SEO du site web.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Semaines 7-8</div>
+              <div class="timeline-title">Optimisation et bilan</div>
+              <p>Analyse des performances, ajustements stratégiques et préparation du rapport final.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🏫 Contexte académique</h3>
+        <p>Ce stage s'intègre dans mon parcours de formation en marketing digital et constitue une étape clé de ma professionnalisation. Il répond aux exigences académiques tout en offrant une expérience concrète et enrichissante.</p>
+
+        <div class="callout">
+          <h4>Validation académique</h4>
+          <p>Le stage fait l'objet d'une évaluation complète incluant ce rapport, une soutenance orale et l'évaluation du tuteur entreprise.</p>
+        </div>
+
+        <ul class="key-points">
+          <li><strong>Formation</strong> : Master en Marketing Digital</li>
+          <li><strong>Établissement</strong> : NEOMA Business School</li>
+          <li><strong>Encadrement</strong> : Tuteur académique + Tuteur entreprise</li>
+          <li><strong>Évaluation</strong> : Rapport + Soutenance + Appréciation tuteur</li>
         </ul>
       </div>
     </section>
@@ -291,40 +645,32 @@ h2 {
   </footer>
 
   <script>
-    // Menu dropdown functionality
+    // Date de mise à jour
+    (function(){
+      var e = document.getElementById('last-updated');
+      if(e){
+        var d = new Date();
+        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
+        e.textContent = s;
+      }
+    })();
+
+    // Menu dropdown
     document.addEventListener('DOMContentLoaded', function() {
-      const dropdown = document.querySelector('.dropdown');
-      const dropbtn = document.querySelector('.dropbtn');
-      const dropdownMenu = document.querySelector('.dropdown-menu');
+      const dropdownBtn = document.querySelector('.nav-btn');
+      const dropdownContent = document.querySelector('.nav-dropdown-content');
       
-      if (dropbtn && dropdownMenu) {
-        dropbtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const isOpen = dropdownMenu.style.display === 'block';
-          dropdownMenu.style.display = isOpen ? 'none' : 'block';
-          dropbtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-          if (!dropdown.contains(e.target)) {
-            dropdownMenu.style.display = 'none';
-            dropbtn.setAttribute('aria-expanded', 'false');
-          }
-        });
-      }
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownContent.style.display === 'block';
+        dropdownContent.style.display = isOpen ? 'none' : 'block';
+        dropdownBtn.setAttribute('aria-expanded', !isOpen);
+      });
       
-      // Update last modified date
-      const lastUpdated = document.getElementById('last-updated');
-      if (lastUpdated) {
-        const date = new Date();
-        const formattedDate = [
-          date.getDate().toString().padStart(2,'0'), 
-          (date.getMonth()+1).toString().padStart(2,'0'), 
-          date.getFullYear()
-        ].join('/');
-        lastUpdated.textContent = formattedDate;
-      }
+      document.addEventListener('click', function() {
+        dropdownContent.style.display = 'none';
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      });
     });
   </script>
 </body>
