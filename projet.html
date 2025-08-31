@@ -1,74 +1,492 @@
-(cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
-diff --git a/projet.html b/projet.html
---- a/projet.html
-+++ b/projet.html
-@@ -0,0 +1,67 @@
-+<!DOCTYPE html>
-+<html lang="fr">
-+<head>
-+  <meta charset="utf-8">
-+  <meta name="viewport" content="width=device-width, initial-scale=1">
-+  <title>5. Projet professionnel</title>
-+  <link rel="stylesheet" href="styles.css">
-+</head>
-+<body>
-+  <a class="skip-link" href="#contenu">Aller au contenu</a>
-+  <header class="site-header" role="banner">
-+    <div class="container">
-+      <h1>Projet professionnel</h1>
-+      <p class="subtitle">Perspectives après le stage</p>
-+      <div class="meta">
-+        <span><strong>Étudiant·e</strong> : Lilian Mahier</span>
-+        <span><strong>Période</strong> : 02/05/2025 - 30/06/2025 — <em>8 semaines</em></span>
-+        <span><strong>Tuteur·rice</strong> : Nasser Madaran</span>
-+      </div>
-+      <nav class="site-nav" aria-label="Navigation principale">
-+        <ul>
-+          <li class="dropdown">
-+            <a href="#" class="dropbtn">Pages</a>
-+            <ul class="dropdown-menu">
-+              <li><a href="informations.html">1. Informations sur le stage</a></li>
-+              <li><a href="entreprise.html">2. Présentation de l’entreprise</a></li>
-+              <li><a href="retour.html">3. Retour d’expérience</a></li>
-+              <li><a href="analyse.html">4. Analyse critique</a></li>
-+              <li><a href="projet.html">5. Projet professionnel</a></li>
-+            </ul>
-+          </li>
-+          <li><a href="index.html">Accueil</a></li>
-+        </ul>
-+      </nav>
-+      <div class="actions">
-+        <button onclick="window.print()" class="btn">Télécharger en PDF</button>
-+      </div>
-+    </div>
-+  </header>
-+
-+  <main id="contenu" class="container" role="main">
-+    <section>
-+      <div class="card">
-+        <p>Ce stage confirme mon attrait pour le <strong>growth marketing</strong> et la <strong>communication digitale</strong>. À court terme, je souhaite consolider mes compétences en acquisition organique, optimisation social media et SEO.</p>
-+        <p>À moyen terme, je vise une <em>[poursuite d’études / alternance / premier poste]</em> dans un environnement produit/data, où je pourrai piloter des stratégies d’acquisition responsables et mesurables.</p>
-+      </div>
-+    </section>
-+  </main>
-+
-+  <footer class="site-footer" role="contentinfo">
-+    <div class="container">
-+      <p>Contact : lilian.mahier.22@neoma-bs.com · Dernière mise à jour : <span id="last-updated"></span></p>
-+    </div>
-+  </footer>
-+
-+  <script>
-+    (function(){
-+      var e = document.getElementById('last-updated');
-+      if(e){
-+        var d = new Date();
-+        var s = [d.getDate().toString().padStart(2,'0'), (d.getMonth()+1).toString().padStart(2,'0'), d.getFullYear()].join('/');
-+        e.textContent = s;
-+      }
-+    })();
-+  </script>
-+</body>
-+</html>
-EOF
-)
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Projet professionnel suite au stage chez Leker">
+  <title>Projet professionnel - Lilian Mahier</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #c53d7d;
+      --card: #0b1220;
+      --border: #1e293b;
+      --gradient-1: linear-gradient(135deg, #c53d7d 0%, #8b5fbf 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .logo-text {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .site-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .meta span {
+      display: block;
+    }
+
+    .meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .tuteur-info {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tuteur-info strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-btn {
+      background: var(--gradient-1);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--card);
+      min-width: 280px;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      z-index: 1000;
+      margin-top: 0.5rem;
+    }
+
+    .nav-dropdown-content a {
+      color: var(--text);
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-dropdown-content a:hover {
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .nav-dropdown-content a.current {
+      background: var(--panel);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-content {
+      display: block;
+    }
+
+    main {
+      padding: 3rem 0;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .callout {
+      background: linear-gradient(135deg, var(--accent)15, var(--accent)05);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .callout h4 {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 12px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+    }
+
+    .timeline-content {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-period {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .key-points {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .key-points li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .key-points li:before {
+      content: '▶';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    .key-points li:last-child {
+      border-bottom: none;
+    }
+
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .vision-item {
+      background: var(--panel);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .vision-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-1);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .vision-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .vision-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .site-footer {
+      background: var(--panel);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo-section">
+            <div class="logo-text">Leker</div>
+          </div>
+          <div class="header-text">
+            <h1>Rapport de stage</h1>
+            <p class="subtitle">Communication & Growth Marketing chez <strong>Leker</strong></p>
+            <div class="meta">
+              <span><strong>Étudiant</strong> : Lilian Mahier</span>
+              <span><strong>Période</strong> : 8 semaines en 2024</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="tuteur-info">
+            <span><strong>Tuteur de stage</strong></span><br>
+            <span>Nasser Madaran</span><br>
+            <span>CEO & Fondateur</span>
+          </div>
+          
+          <div class="nav-dropdown">
+            <button class="nav-btn">Navigation ▼</button>
+            <div class="nav-dropdown-content">
+              <a href="index.html">Accueil</a>
+              <a href="informations.html">1. Informations sur le stage</a>
+              <a href="entreprise.html">2. Présentation de l'entreprise</a>
+              <a href="retour.html">3. Retour d'expérience</a>
+              <a href="analyse.html">4. Analyse critique</a>
+              <a href="projet.html" class="current">5. Projet professionnel</a>
+              <a href="defi-technique.html">6. Défi technique</a>
+              <a href="remerciements.html">7. Remerciements</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a> > <span>Projet professionnel</span>
+    </nav>
+
+    <section>
+      <h2>5. Projet professionnel</h2>
+      
+      <div class="callout">
+        <h4>Révélation entrepreneuriale</h4>
+        <p>Ce stage a été un tournant décisif : grâce aux échanges avec l'équipe Leker, j'ai découvert ma véritable passion pour l'entrepreneuriat.</p>
+      </div>
+
+      <div class="card">
+        <h3>Impact transformateur du stage</h3>
+        <p>L'expérience Leker a complètement redéfini mes ambitions professionnelles. Les discussions avec Nasser sur les défis entrepreneuriaux et l'impact social m'ont révélé une aspiration profonde à créer mes propres entreprises.</p>
+
+        <div class="vision-grid">
+          <div class="vision-item">
+            <span class="vision-icon">🌱</span>
+            <div class="vision-title">Impact social et environnemental</div>
+            <div>Créer des entreprises qui génèrent de la valeur économique tout en contribuant positivement à la société.</div>
+          </div>
+          <div class="vision-item">
+            <span class="vision-icon">🚀</span>
+            <div class="vision-title">Innovation technologique</div>
+            <div>Développer des solutions tech qui répondent à de vrais besoins du marché.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Feuille de route</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2024-2026</div>
+              <div class="timeline-title">Consolidation des compétences</div>
+              <p>Approfondir mes compétences en marketing digital dans des startups.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2026-2028</div>
+              <div class="timeline-title">Expérience opérationnelle</div>
+              <p>Évoluer vers des responsabilités de leadership.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2028+</div>
+              <div class="timeline-title">Lancement entrepreneurial</div>
+              <p>Créer mes premières entreprises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Contact : lilian.mahier.22@neoma-bs.com</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownBtn = document.querySelector('.nav-btn');
+      const dropdownContent = document.querySelector('.nav-dropdown-content');
+      
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownContent.style.display === 'block';
+        dropdownContent.style.display = isOpen ? 'none' : 'block';
+      });
+      
+      document.addEventListener('click', function() {
+        dropdownContent.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
