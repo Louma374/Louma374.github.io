@@ -1,1 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Défis techniques relevés lors du développement de Leker">
+  <title>Défi technique - Leker</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #c53d7d;
+      --card: #0b1220;
+      --border: #1e293b;
+      --gradient-1: linear-gradient(135deg, #c53d7d 0%, #8b5fbf 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .site-header {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .header-left {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .logo-text {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .site-header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .meta span {
+      display: block;
+    }
+
+    .meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-btn {
+      background: var(--gradient-1);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--card);
+      min-width: 280px;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      z-index: 1000;
+      margin-top: 0.5rem;
+    }
+
+    .nav-dropdown-content a {
+      color: var(--text);
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-dropdown-content a:hover {
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .nav-dropdown-content a.current {
+      background: var(--panel);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-content {
+      display: block;
+    }
+
+    main {
+      padding: 3rem 0;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .callout {
+      background: linear-gradient(135deg, var(--accent)15, var(--accent)05);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .callout h4 {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .tech-item {
+      background: var(--panel);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .tech-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-1);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .tech-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .tech-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .key-points {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .key-points li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .key-points li:before {
+      content: '▶';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    .key-points li:last-child {
+      border-bottom: none;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-item {
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .code-snippet {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .code-snippet::before {
+      content: 'JavaScript';
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .code-snippet pre {
+      color: #e6e6e6;
+      font-family: 'Monaco', 'Cascadia Code', 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .highlight {
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .social-links a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .social-links a:hover {
+      background: var(--panel);
+      border-color: var(--accent);
+    }
+
+    .site-footer {
+      background: var(--panel);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .header-left {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .site-header h1 {
+        font-size: 2rem;
+      }
+      
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="header-left">
+          <div class="logo-section">
+            <div class="logo-text">Leker</div>
+          </div>
+          <div class="header-text">
+            <h1>Défi Technique</h1>
+            <p class="subtitle">Les défis relevés et solutions innovantes</p>
+            <div class="meta">
+              <span><strong>Projet</strong> : Plateforme de streaming vidéo</span>
+              <span><strong>Technologies</strong> : React, Node.js, MongoDB, AWS</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="nav-dropdown">
+            <button class="nav-btn">Navigation ▼</button>
+            <div class="nav-dropdown-content">
+              <a href="index.html">Accueil</a>
+              <a href="equipe.html">Équipe</a>
+              <a href="fonctionnalites.html">Fonctionnalités</a>
+              <a href="defi-technique.html" class="current">Défi Technique</a>
+              <a href="remerciements.html">Remerciements</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Accueil</a> > <span>Défi Technique</span>
+    </nav>
+
+    <section>
+      <h2>Défis techniques et solutions</h2>
+      
+      <div class="callout">
+        <h4>Challenge accepté</h4>
+        <p>Créer une plateforme de streaming moderne, scalable et performante représentait un défi technique ambitieux que notre équipe a relevé avec passion.</p>
+      </div>
+
+      <div class="card">
+        <h3>Vue d'ensemble du projet</h3>
+        <p>Leker représente l'aboutissement de 3 mois de développement intensif, combinant expertise technique et vision produit pour créer une expérience utilisateur exceptionnelle.</p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <div class="stat-label">Mois de développement</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15k+</span>
+            <div class="stat-label">Lignes de code</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8</span>
+            <div class="stat-label">Technologies</div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <div class="stat-label">Responsive</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Défis techniques majeurs</h3>
+        
+        <div class="tech-grid">
+          <div class="tech-item">
+            <span class="tech-icon">📹</span>
+            <div class="tech-title">Streaming adaptatif</div>
+            <div>Système qui s'adapte automatiquement à la bande passante pour une lecture fluide sans interruption.</div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-icon">🏗️</span>
+            <div class="tech-title">Architecture scalable</div>
+            <div>Microservices capables de gérer des milliers d'utilisateurs simultanés sans perte de performance.</div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-icon">🔒</span>
+            <div class="tech-title">Sécurité avancée</div>
+            <div>Chiffrement bout en bout et authentification multi-facteurs pour protéger les données utilisateur.</div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-icon">🎨</span>
+            <div class="tech-title">Interface moderne</div>
+            <div>Design responsive avec animations fluides et expérience utilisateur optimisée sur tous les appareils.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Solutions techniques innovantes</h3>
+        <p>Notre approche s'est concentrée sur l'utilisation de technologies de pointe pour résoudre chaque défi avec élégance et efficacité.</p>
+
+        <div class="code-snippet">
+          <pre><code>// Système de streaming adaptatif
+class VideoStreamer {
+    constructor(quality = 'auto') {
+        this.adaptiveBitrate = new AdaptiveBitrateStreaming();
+        this.bufferManager = new BufferManager();
+    }
+    
+    async streamVideo(videoId, userBandwidth) {
+        const optimalQuality = this.adaptiveBitrate
+            .calculateOptimalQuality(userBandwidth);
+        
+        return await this.bufferManager
+            .loadSegments(videoId, optimalQuality);
+    }
+}</code></pre>
+        </div>
+
+        <ul class="key-points">
+          <li>Cache intelligent avec Redis pour optimiser les temps de réponse</li>
+          <li>CDN global CloudFlare pour la distribution de contenu</li>
+          <li>Algorithmes de recommandation personnalisés basés sur l'IA</li>
+          <li>Optimisation des requêtes base de données avec indexation avancée</li>
+          <li>Monitoring en temps réel avec alertes automatiques</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Stack technologique</h3>
+        
+        <div class="tech-grid">
+          <div class="tech-item">
+            <span class="tech-icon">⚛️</span>
+            <div class="tech-title">Frontend</div>
+            <div><span class="highlight">React.js</span> avec <span class="highlight">TypeScript</span> pour une interface robuste et moderne.</div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-icon">🟢</span>
+            <div class="tech-title">Backend</div>
+            <div><span class="highlight">Node.js</span> et <span class="highlight">Express.js</span> avec <span class="highlight">MongoDB</span> pour les données.</div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-icon">☁️</span>
+            <div class="tech-title">Infrastructure</div>
+            <div><span class="highlight">AWS</span> avec <span class="highlight">Docker</span> pour le déploiement et la scalabilité.</div>
+          </div>
+          <div class="tech-item">
+            <span class="tech-icon">🚀</span>
+            <div class="tech-title">Performance</div>
+            <div><span class="highlight">Redis</span> pour le cache et <span class="highlight">CloudFlare</span> pour la CDN.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Performances et métriques</h3>
+        <p>L'optimisation à tous les niveaux a permis d'atteindre des performances exceptionnelles qui placent Leker parmi les plateformes les plus rapides du marché.</p>
+
+        <ul class="key-points">
+          <li>Temps de chargement initial réduit à moins de 2 secondes</li>
+          <li>Score Lighthouse de 95/100 pour les performances</li>
+          <li>Latence de streaming inférieure à 100ms</li>
+          <li>Disponibilité de 99.9% garantie</li>
+          <li>Support de plus de 10,000 utilisateurs simultanés</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/lilian-mahier-88019b251" target="_blank">Lilian LinkedIn</a>
+        <a href="https://www.linkedin.com/in/nassermadaran/" target="_blank">Nasser LinkedIn</a>
+        <a href="https://www.linkedin.com/in/sarah-oiknine/" target="_blank">Sarah LinkedIn</a>
+      </div>
+      <p>&copy; 2024 Leker. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdownBtn = document.querySelector('.nav-btn');
+      const dropdownContent = document.querySelector('.nav-dropdown-content');
+      
+      dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownContent.style.display === 'block';
+        dropdownContent.style.display = isOpen ? 'none' : 'block';
+      });
+      
+      document.addEventListener('click', function() {
+        dropdownContent.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
